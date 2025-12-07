@@ -7,7 +7,12 @@
 
 import Foundation
 
-public struct CheckoutSession {
+public struct CheckoutSession: Codable {
     public let id: String
     public let total: Decimal
+
+    public init(id: String, total: Decimal) {
+        self.id = id
+        self.total = total
+    }
 }
