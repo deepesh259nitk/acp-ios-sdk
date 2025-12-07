@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import ACP_iOS_SDK
+@testable import ACPKit
 
 final class CartManagerTests: XCTestCase {
 

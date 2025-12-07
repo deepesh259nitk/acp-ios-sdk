@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import ACP_iOS_SDK // replace appropriately
+@testable import ACPKit // replace appropriately
 
 final class MCPNetworkClientTests: XCTestCase {
     func testMockMCPGetAndPost() async throws {

@@ -11,19 +11,19 @@ let package = Package(
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
-            name: "ACP-iOS-SDK",
-            targets: ["ACP-iOS-SDK"]
+            name: "ACPKit",
+            targets: ["ACPKit"]
         ),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "ACP-iOS-SDK"
+            name: "ACPKit"
         ),
         .testTarget(
-            name: "ACP-iOS-SDKTests",
-            dependencies: ["ACP-iOS-SDK"]
+            name: "ACPKitTests",
+            dependencies: ["ACPKit"]
         ),
     ]
 )

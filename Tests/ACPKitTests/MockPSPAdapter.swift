@@ -6,7 +6,7 @@
 //
 
 import Foundation
-@testable import ACP_iOS_SDK
+@testable import ACPKit
 
 /// Mock PSP Adapter for testing without real PSP
 public class MockPSPAdapter: ACPPSPAdapter {

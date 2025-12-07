@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import ACP_iOS_SDK // replace with your package module name
+@testable import ACPKit // replace with your package module name
 
 final class AgentManagerTests: XCTestCase {
     func testMockAgentReturnsResponse() async throws {
