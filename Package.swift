@@ -4,7 +4,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "ACP-iOS-SDK",
+    name: "ACPKit",
     platforms: [
             .iOS(.v13) // <-- required for async/await
         ],
