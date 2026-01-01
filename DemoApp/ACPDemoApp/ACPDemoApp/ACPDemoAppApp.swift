@@ -12,7 +12,13 @@ import ACPKit
 struct ACPDemoAppApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            let mockMCP = MockMCPNetworkClient()
+            let mockAgent = MockAgent(responses: [
+                "shirt": AgentResponse(message: "Found shirts", suggestedProductIDs: ["p1"])
+            ])
+            let client = ACPClient(mcpClient: mockMCP, agent: mockAgent, pspAdapter: MockPSPAdapter())
+            let cartVM = CartViewModel()
+            ProductListView(vm: ProductViewModel(client: client, cartVM: cartVM))
         }
     }
 }

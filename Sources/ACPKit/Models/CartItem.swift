@@ -8,4 +8,9 @@
 public struct CartItem {
     public let productID: String
     public var quantity: Int
+    
+    public init(productID: String, quantity: Int) {
+           self.productID = productID
+           self.quantity = quantity
+    }
 }

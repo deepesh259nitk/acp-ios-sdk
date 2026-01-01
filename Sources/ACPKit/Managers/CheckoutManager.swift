@@ -16,6 +16,13 @@ public struct CreateCheckoutRequest: Codable {
 public struct CreateCheckoutResponse: Codable {
     public let checkoutID: String
     public let amount: Decimal
+    public let currency: String
+    
+    public init(checkoutID: String, amount: Decimal, currency: String) {
+        self.checkoutID = checkoutID
+        self.amount = amount
+        self.currency = currency
+    }
 }
 
 /// CheckoutManager that uses MCPNetworkClient and PSP adapter

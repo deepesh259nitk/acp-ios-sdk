@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		543453242EE632C700099C7A /* ACPKit in Frameworks */ = {isa = PBXBuildFile; productRef = 543453232EE632C700099C7A /* ACPKit */; };
-		543453272EE6333600099C7A /* ACPKit in Frameworks */ = {isa = PBXBuildFile; productRef = 543453262EE6333600099C7A /* ACPKit */; };
-		5434532A2EE633ED00099C7A /* ACPKit in Frameworks */ = {isa = PBXBuildFile; productRef = 543453292EE633ED00099C7A /* ACPKit */; };
+		54A1D39C2F0094FD00AC091B /* ACPKit in Frameworks */ = {isa = PBXBuildFile; productRef = 543453232EE632C700099C7A /* ACPKit */; };
+		54A1D39D2F0094FD00AC091B /* ACPKit in Frameworks */ = {isa = PBXBuildFile; productRef = 543453262EE6333600099C7A /* ACPKit */; };
+		54A1D39E2F0094FD00AC091B /* ACPKit in Frameworks */ = {isa = PBXBuildFile; productRef = 543453292EE633ED00099C7A /* ACPKit */; };
+		54A1D39F2F0094FD00AC091B /* ACPKit in Frameworks */ = {isa = PBXBuildFile; productRef = 54B15F762EE7172E00CC813E /* ACPKit */; };
+		54E006DE2F007F0B00D795F9 /* ACPKit in Frameworks */ = {isa = PBXBuildFile; productRef = 54E006DD2F007F0B00D795F9 /* ACPKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,9 +60,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				543453272EE6333600099C7A /* ACPKit in Frameworks */,
-				5434532A2EE633ED00099C7A /* ACPKit in Frameworks */,
-				543453242EE632C700099C7A /* ACPKit in Frameworks */,
+				54A1D39F2F0094FD00AC091B /* ACPKit in Frameworks */,
+				54A1D39E2F0094FD00AC091B /* ACPKit in Frameworks */,
+				54A1D39D2F0094FD00AC091B /* ACPKit in Frameworks */,
+				54A1D39C2F0094FD00AC091B /* ACPKit in Frameworks */,
+				54E006DE2F007F0B00D795F9 /* ACPKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,6 +128,8 @@
 				543453232EE632C700099C7A /* ACPKit */,
 				543453262EE6333600099C7A /* ACPKit */,
 				543453292EE633ED00099C7A /* ACPKit */,
+				54B15F762EE7172E00CC813E /* ACPKit */,
+				54E006DD2F007F0B00D795F9 /* ACPKit */,
 			);
 			productName = ACPDemoApp;
 			productReference = 543452F82EE632A600099C7A /* ACPDemoApp.app */;
@@ -208,7 +214,7 @@
 			mainGroup = 543452EF2EE632A600099C7A;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				543453282EE633ED00099C7A /* XCLocalSwiftPackageReference "../../../ACPKit" */,
+				54E006DA2F0075BB00D795F9 /* XCLocalSwiftPackageReference "../../../ACPKit" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 543452F92EE632A600099C7A /* Products */;
@@ -595,7 +601,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		543453282EE633ED00099C7A /* XCLocalSwiftPackageReference "../../../ACPKit" */ = {
+		54E006DA2F0075BB00D795F9 /* XCLocalSwiftPackageReference "../../../ACPKit" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = ../../../ACPKit;
 		};
@@ -611,6 +617,14 @@
 			productName = ACPKit;
 		};
 		543453292EE633ED00099C7A /* ACPKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ACPKit;
+		};
+		54B15F762EE7172E00CC813E /* ACPKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ACPKit;
+		};
+		54E006DD2F007F0B00D795F9 /* ACPKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = ACPKit;
 		};

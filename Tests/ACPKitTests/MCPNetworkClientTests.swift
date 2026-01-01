@@ -21,7 +21,7 @@ final class MCPNetworkClientTests: XCTestCase {
         XCTAssertEqual(fetched.first?.id, "p1")
 
         // Register POST response for creating checkout
-        let createResp = CreateCheckoutResponse(checkoutID: "co_123", amount: Decimal(100))
+        let createResp = CreateCheckoutResponse(checkoutID: "co_123", amount: Decimal(100), currency: "GBP")
         try mock.registerPostResponse("/acp/checkout", value: createResp)
 
         let req = CreateCheckoutRequest(cartID: "cart_1")

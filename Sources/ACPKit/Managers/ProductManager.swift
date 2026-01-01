@@ -35,20 +35,23 @@ public final class ProductManager {
     /// Fetches all products from the MCP `/acp/products` endpoint.
     /// - Returns: Array of ProductDTO
     /// - Throws: MCPNetworkError if network or decoding fails
-    public func list() async throws -> [ProductDTO] {
+    public func list() async throws -> [Product] {
         // The path is the relative path per ACP spec; adjust if MCP uses a different path
-        return try await client.get("/acp/products", as: [ProductDTO].self)
+        // return try await client.get("/acp/products", as: [ProductDTO].self)
+        let dtos = try await client.get("/acp/products", as: [ProductDTO].self)
+        return dtos.map { Product(dto: $0) }
     }
-
+    
     /// Search (simple implementation): call MCP search endpoint or filter locally.
-    public func search(query: String) async throws -> [ProductDTO] {
+    public func search(query: String) async throws -> [Product] {
         // Try server-side search endpoint first (optional)
         do {
-            return try await client.get("/acp/products?search=\(urlEncode(query))", as: [ProductDTO].self)
+            let dtos = try await client.get("/acp/products?search=\(urlEncode(query))", as: [ProductDTO].self)
+            return dtos.map { Product(dto: $0) }
         } catch {
             // Fallback: fetch all and filter locally
             let all = try await list()
-            return all.filter { $0.title.localizedCaseInsensitiveContains(query) || ($0.description?.localizedCaseInsensitiveContains(query) ?? false) }
+            return all.filter { $0.name.localizedCaseInsensitiveContains(query) || ($0.description?.localizedCaseInsensitiveContains(query) ?? false) }
         }
     }
 

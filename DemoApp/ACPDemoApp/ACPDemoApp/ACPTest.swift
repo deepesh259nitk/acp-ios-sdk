@@ -1,21 +1,21 @@
 //
-//  LocalMockFlowTests.swift
-//  ACP-iOS-SDK
+//  ACPTest.swift
+//  ACPDemoApp
 //
-//  Created by Deepesh Vasthimal on 07/12/2025.
+//  Created by Deepesh Vasthimal on 08/12/2025.
 //
 
-import XCTest
-@testable import ACPKit
+import Foundation
+import ACPKit
 
-class LocalMockFlowTests: XCTestCase {
+class ACPTest {
     
-    func testMockFlow() {
-        // Setup for local mock testing
+    func testACPKit() async {
+        
         let mockMCP = MockMCPNetworkClient()
         _ = try! mockMCP.registerGetResponse("/acp/products", value: [ProductDTO(id: "p1", title: "Shirt", price: Decimal(50))])
         _ = try! mockMCP.registerPostResponse("/acp/checkout", value: CreateCheckoutResponse(checkoutID: "co_1", amount: Decimal(50), currency: "GBP"))
-
+        
         let mockAgent = MockAgent(responses: ["shirt": AgentResponse(message: "Here are shirts", suggestedProductIDs: ["p1"])])
         let mockPSP = MockPSPAdapter()
 
@@ -30,6 +30,4 @@ class LocalMockFlowTests: XCTestCase {
             print("Done")
         }
     }
-    
-
 }
