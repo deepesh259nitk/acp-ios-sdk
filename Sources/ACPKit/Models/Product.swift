@@ -13,6 +13,14 @@ public struct Product {
     public let price: Decimal
     public let description: String?
     public let currency: String?
+    
+    public init(id: String, name: String, price: Decimal, description: String?, currency: String?) {
+        self.id = id
+        self.name = name
+        self.price = price
+        self.description = description
+        self.currency = currency
+    }
 }
 
 extension Product {

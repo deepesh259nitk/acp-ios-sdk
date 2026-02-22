@@ -139,8 +139,14 @@ public final class MockMCPNetworkClient: MCPNetworkClient {
 
     /// Register a mock response for a POST path
     public func registerPostResponse<T: Encodable>(_ path: String, value: T) throws {
+        
+        guard let value = value as? CreateCheckoutResponse else {
+            throw MCPNetworkError.unknown
+        }
+        
         let data = try JSONEncoder().encode(value)
         postResponses[path] = data
+    
     }
 
     public func get<T>(_ path: String, as type: T.Type) async throws -> T where T : Decodable {
@@ -152,10 +158,21 @@ public final class MockMCPNetworkClient: MCPNetworkClient {
     }
 
     public func post<Body, Response>(_ path: String, body: Body, as type: Response.Type) async throws -> Response where Body : Encodable, Response : Decodable {
-        guard let data = postResponses[path] else {
-            throw MCPNetworkError.invalidURL("No mock POST response for path: \(path)")
+ 
+        // 1️⃣ Exact match (for static endpoints)
+        if let data = postResponses[path] {
+            return try JSONDecoder().decode(Response.self, from: data)
         }
-        let obj = try JSONDecoder().decode(Response.self, from: data)
-        return obj
+        
+        // 2️⃣ Handle dynamic checkout completion
+        if path.starts(with: "/acp/checkout/") && path.hasSuffix("/complete") {
+            
+            let response = ["status": "succeeded"]
+            let data = try JSONEncoder().encode(response)
+            return try JSONDecoder().decode(Response.self, from: data)
+        }
+        
+        // 3️⃣ Fallback
+        throw MCPNetworkError.invalidURL("No mock POST response for path: \(path)")
     }
 }

@@ -10,6 +10,6 @@ import Foundation
 struct CartItemViewData: Identifiable {
     let id: String          // productID
     let name: String
-    let price: Double
+    let price: Decimal
     let quantity: Int
 }
