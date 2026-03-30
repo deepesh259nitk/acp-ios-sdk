@@ -12,11 +12,20 @@ import Foundation
 public struct AgentResponse: Codable {
     public let message: String
     public let suggestedProductIDs: [String]?
+    public let actions: [AgentAction]?
 
-    public init(message: String, suggestedProductIDs: [String]? = nil) {
+    public init(message: String, suggestedProductIDs: [String]? = nil, actions: [AgentAction]? = nil) {
         self.message = message
         self.suggestedProductIDs = suggestedProductIDs
+        self.actions = actions
     }
+}
+
+public enum AgentAction: Codable {
+    case showProducts([String])
+    case addToCart([String])
+    case removeFromCart([String])
+    case checkout
 }
 
 /// Agent error cases

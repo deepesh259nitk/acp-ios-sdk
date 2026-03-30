@@ -78,6 +78,7 @@ struct ACPDemoAppApp: App {
                     cartVM: cartVM
                 )
             )
+            BuyView()
         }
     }
 }
