@@ -10,22 +10,47 @@ import Foundation
 /// Response types the Agent can return.
 /// This is intentionally simple; expand as you need (intent, actions, messages).
 public struct AgentResponse: Codable {
+
     public let message: String
+
+    public let products: [ProductDTO]?
+
     public let suggestedProductIDs: [String]?
+
     public let actions: [AgentAction]?
 
-    public init(message: String, suggestedProductIDs: [String]? = nil, actions: [AgentAction]? = nil) {
+    public let metadata: Metadata?
+
+    public init(
+        message: String,
+        products: [ProductDTO]? = nil,
+        suggestedProductIDs: [String]? = nil,
+        actions: [AgentAction]? = nil,
+        metadata: Metadata? = nil
+    ) {
         self.message = message
+        self.products = products
         self.suggestedProductIDs = suggestedProductIDs
         self.actions = actions
+        self.metadata = metadata
     }
 }
 
 public enum AgentAction: Codable {
+
     case showProducts([String])
+
     case addToCart([String])
+
     case removeFromCart([String])
+
     case checkout
+
+    case openProduct(String)
+
+    case showPaymentSheet(amount: Decimal)
+
+    case navigate(route: String)
 }
 
 /// Agent error cases

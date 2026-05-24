@@ -26,7 +26,7 @@ public final class NetworkAgent: Agent {
         let userId = UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString
         let body: [String: Any] = [
             "userId": userId,   // 👈 REQUIRED
-            "selectedModel": "claude-3-haiku",
+            "selectedModel": "claude",
             "messages": [
                 [
                     "role": "user",
@@ -57,18 +57,11 @@ public final class NetworkAgent: Agent {
     
     private func extractMessage(from data: Data) -> String {
         do {
-            let json = try JSONSerialization.jsonObject(with: data) as? [String: Any]
-            
-            if let messages = json?["messages"] as? [[String: Any]],
-               let last = messages.last,
-               let content = last["content"] as? String {
-                return content
-            }
-            
+            let response = try JSONDecoder().decode(AgentResponse.self, from: data)
+            return response.message
         } catch {
-            print("Parsing error:", error)
+            print("Decoding error:", error)
+            return "Sorry, couldn't decode response."
         }
-        
-        return "Sorry, I couldn't understand the response."
     }
 }
